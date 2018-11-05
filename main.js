@@ -4,7 +4,7 @@ $(function() {
 })
 
 var db;
-var data = 0;
+var pressNumber = 0;
 
 
 function initFirebase () {
@@ -25,7 +25,7 @@ function initText() {
     .onSnapshot(function(doc) {
       console.log(doc.data().press);
       $('#press-text').text(doc.data().press);
-      data = doc.data().press;
+      pressNumber = doc.data().press;
     })
 
   $("#press-button").click(function() {
@@ -33,7 +33,7 @@ function initText() {
     data += 1;
     db.collection("data").doc('k1Cr5QzO1j5bgXkZMAKt')
       .update({
-        press: data
+        press: pressNumber
       })
 
   })
