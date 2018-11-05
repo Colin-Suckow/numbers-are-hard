@@ -30,7 +30,7 @@ function initText() {
 
   $("#press-button").click(function() {
     console.log("+1 button pressed");
-    data += 1;
+    pressNumber += 1;
     db.collection("data").doc('k1Cr5QzO1j5bgXkZMAKt')
       .update({
         press: pressNumber
