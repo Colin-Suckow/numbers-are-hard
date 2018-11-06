@@ -4,7 +4,7 @@ $(function() {
 })
 
 var db;
-var pressNumber = 0;
+var pressNumber = -1;
 
 
 function initFirebase () {
@@ -29,6 +29,9 @@ function initText() {
     })
 
   $("#press-button").click(function() {
+    if(pressNumber == -1) {
+      return;
+    }
     console.log("+1 button pressed");
     pressNumber += 1;
     db.collection("data").doc('k1Cr5QzO1j5bgXkZMAKt')
