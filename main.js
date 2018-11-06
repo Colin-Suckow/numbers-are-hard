@@ -21,12 +21,15 @@ function initFirebase () {
 }
 
 function initText() {
-  db.collection("data").doc('k1Cr5QzO1j5bgXkZMAKt')
-    .onSnapshot(function(doc) {
-      console.log(doc.data().press);
-      $('#press-text').text(doc.data().press);
+
+  var updateInterval = setInterval(() => {
+    db.collection("data").doc('k1Cr5QzO1j5bgXkZMAKt')
+    .get().then(function(doc) {
       pressNumber = doc.data().press;
+      $('#press-text').text(doc.data().press);
     })
+  }, 1000);
+
 
   $("#press-button").click(function() {
     if(pressNumber == -1) {
@@ -38,7 +41,8 @@ function initText() {
       .update({
         press: pressNumber
       })
-
+      $('#press-text').text(pressNumber);
   })
+  
 
 }
